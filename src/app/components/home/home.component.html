@@ -1,0 +1,79 @@
+<!-- ----------------------------------slider--------------------------------------- -->
+
+<!--Carousel Starts-->
+<div class="container head">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img
+          src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/heroBannerImages/DH-KAshmir-Banner@2x2.jpg?crop=1200:320&downsize=1200:320%22"
+          class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img
+          src="http://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/heroBannerImages/3.long%20weekend_Web.jpg?crop=1200:320&downsize=1200:320"
+          class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img
+          src="http://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/heroBannerImages/5.Shimla&%20%20Manali_Web.jpg?crop=1200:320&downsize=1200:320"
+          class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img
+          src="http://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/heroBannerImages/1.Ooty_Web.jpg?crop=1200:320&downsize=1200:320"
+          class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/heroBannerImages/DH-Kerala-Banner@2x2.jpg?crop=1200:320&downsize=1200:320"
+          class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<br>
+<!-- -------------------------main container -------------------------- -->
+<div class="container">
+  <div class="place">
+    <h1><b>Places</b></h1>
+  </div>
+  <div class="row">
+    <div *ngFor="let myele of cards1" class="card col m-3 p-2">
+      <img src="{{myele.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{myele.title}}</h5>
+        <a target="_blank" href="#" class="btn btn-primary ">{{myele.btnText}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let myele of  cards2" class="card col m-3 p-2">
+      <img src="{{myele.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{myele.title}}</h5>
+        <a target="_blank" href="#" class="btn btn-primary">{{myele.btnText}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let myele of  cards3" class="card col m-3 p-2">
+      <img src="{{myele.image}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title ">{{myele.title}}</h5>
+        <a target="_blank" href="#" class="btn btn-primary">{{myele.btnText}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

@@ -1,0 +1,185 @@
+<!-- <div class="container-fluid reg" style="background-color: #F9FEFF;">
+    <div class="row">
+         <div class="col"></div> 
+        <div class="col-6">
+            <img src="https://media.istockphoto.com/photos/businessman-filling-online-registration-form-picture-id1013435204?k=20&m=1013435204&s=612x612&w=0&h=i6015QWDU5gn2GE0W5tI1YvDyqgImXgQREpXMUBisoM="  width="100%" height="100%"  alt="register icon">
+        </div>
+
+        <div class="col-5 second">
+            <div class="container" style="border: 5px solid rgb(240, 234, 234); border-radius: 10px;">
+                <form>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div style="margin-top:3%; text-align: center; color: blue; font-size: 20px;">
+                                <b>Register Here! </b>
+                            </div>
+                            <br>
+                            <label for="formGroupExampleInput2" class="form-label"><b>Email</b></label>
+                            <input formControlName="email" type="email" class="form-control" id="formGroupExampleInput2"
+                                placeholder="priya@example.com">
+                        </div>
+                    </div>
+
+                    <div class=" row mt-3">
+                        <div class="col">
+                            <label for="formGroupExampleInput2" class="form-label"><b>Password</b></label>
+                            <input formControlName="paswd" type="password" class="form-control"
+                                id="formGroupExampleInput2" placeholder="Minimum be atleast 5 characters">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label for="formGroupExampleInput2" class="form-label"><b>First Name</b></label>
+                            <input formControlName="firstname" type="text" class="form-control" placeholder="Priya"
+                                aria-label="First name">
+
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput2" class="form-label"><b>Last Name</b></label>
+                            <input formControlName="lastname" type="text" class="form-control" placeholder="Shetty"
+                                aria-label="Last name">
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Register Now</button>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div class=" row mt-3">
+                                <div class="col">
+                                    <div class="d-grid gap-2" style="text-align: center;">
+                                        <span>
+                                            <b>Already Registered?</b>
+                                            <a class="btn" style="cursor:hand" target="_blank"
+                                                style="text-decoration: none; color: blue;"><b>Login</b></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div> -->
+
+
+<div *ngFor="let user of userlist">
+    {{user | json}}
+
+</div>
+<br>
+<div class="container-fluid reg" style="background-color: #F9FEFF;">
+    <div class="row">
+         <div class="col"></div> 
+        <div class="col-6">
+            <img src="https://media.istockphoto.com/photos/businessman-filling-online-registration-form-picture-id1013435204?k=20&m=1013435204&s=612x612&w=0&h=i6015QWDU5gn2GE0W5tI1YvDyqgImXgQREpXMUBisoM="  width="100%" height="100%"  alt="register icon">
+        </div>
+
+        <div class="col-5 second">
+            <div class="container" style="border: 5px solid rgb(240, 234, 234); border-radius: 10px;">
+
+                <form novalidate [formGroup]="myform">
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <br>
+                            <label for="formGroupExampleInput2" class="form-label"><b>Email</b></label>
+                            <input formControlName="email" type="email" class="form-control" id="formGroupExampleInput2"
+                                placeholder="priya@example.com">
+                            <div class="text-danger"
+                                *ngIf="myform.controls['email'].touched && myform.controls['email'].invalid ">
+                                <p *ngIf="myform.controls['email'].errors?.['required']"><b>Email is required</b></p>
+                                <p *ngIf="myform.controls['email'].errors?.['email']"><b>Please enter valid Email</b>
+                                </p>
+                                <p *ngIf="myform.controls['email'].errors?.['minlength']"><b>Email min length 4
+                                        character is required</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" row mt-3">
+                        <div class="col">
+                            <label for="formGroupExampleInput2" class="form-label"><b>Password</b></label>
+                            <input formControlName="paswd" type="password" class="form-control"
+                                id="formGroupExampleInput2" placeholder="Minimum be atleast 5 characters">
+                            <div class="text-danger"
+                                *ngIf="myform.controls['paswd'].touched && myform.controls['paswd'].invalid">
+                                <p *ngIf="myform.controls['paswd'].errors?.['required']"><b>Please Enter Password</b>
+                                </p>
+                                <p *ngIf="myform.controls['paswd'].errors?.['minlength']"><b>Min length should 5
+                                        char</b></p>
+                                <p *ngIf="myform.controls['paswd'].errors?.['maxlength']"><b>Max length should 15
+                                        char</b></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label for="formGroupExampleInput2" class="form-label"><b>First Name</b></label>
+                            <input formControlName="firstname" type="text" class="form-control" placeholder="Priya"
+                                aria-label="First name">
+                            <div class="text-danger"
+                                *ngIf="myform.controls['firstname'].touched && myform.controls['firstname'].invalid">
+                                <p *ngIf="myform.controls['firstname'].errors?.['required']"><b>First Name is Required</b>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput2" class="form-label"><b>Last Name</b></label>
+                            <input formControlName="lastname" type="text" class="form-control" placeholder="Shetty"
+                                aria-label="Last name">
+                            <div class="text-danger"
+                                *ngIf="myform.controls['lastname'].touched && myform.controls['lastname'].invalid">
+                                <p *ngIf="myform.controls['lastname'].errors?.['required']"><b>Last Name is Required</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="d-grid gap-2">
+                                <p>{{errmsg}}</p>
+                                <button (click)="getValues()" type="submit" class="btn btn-primary">Register
+                                    Now</button>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div class=" row mt-3">
+                                <div class="col">
+                                    <div class="d-grid gap-2" style="text-align: center;">
+                                         <span>
+                                            <b>Already Registered?</b>
+                                            <a class="btn" style="cursor:hand" (click)="login()" target="_blank" style="text-decoration: none; color: blue;"><b>Login</b></a>
+                                        </span> 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+
+

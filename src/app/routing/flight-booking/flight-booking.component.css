@@ -1,0 +1,19 @@
+.border{
+    width: 40%;
+    height: 780px;
+    margin-left: 100px;
+    position: relative;
+  justify-content: center;
+}
+
+.form{
+    justify-content: center;
+}
+
+.color{
+    background-color: yellow
+}
+.img{
+    background-image: url(https://media.istockphoto.com/photos/abstract-background-picture-id810483018?k=20&m=810483018&s=612x612&w=0&h=VRn4HnbQq_vrDLEEnEmqCxFdMC4b73tOJO82YCrNvZI=);
+    background-size: cover;
+}

@@ -1,0 +1,17 @@
+/* .reg{
+    padding-top: 130px;
+    } */
+
+    h2{
+        text-align: center;
+    }
+    
+    .card-text{
+        text-align: center;
+        font-size: x-large;
+    }
+    .but a {
+        text-decoration: none;
+        color: white;
+        padding: 30px;
+    }

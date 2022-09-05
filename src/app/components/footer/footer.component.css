@@ -1,0 +1,12 @@
+.foot{
+    text-align: center;
+    font-size: larger;
+    padding-top: 13px;
+    height: 50px;
+    background-color: #c4c8cd;
+    text-decoration: none;
+    position: fixed;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+}

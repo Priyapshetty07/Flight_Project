@@ -1,0 +1,26 @@
+.border{
+   
+    border-radius:15px;
+    background-color: skyblue;
+    height: 7%;
+    min-height: 50px;
+   margin-top: 1%;
+   width: 28%;
+  
+} 
+.body{
+    min-height: 50px;
+   
+}
+
+.align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+} 
+
+.btn{
+    top:-170%;
+    left:85%;
+    position:relative;
+    width: 10%;
+}

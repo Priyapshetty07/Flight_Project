@@ -1,0 +1,163 @@
+<p>flight-booking works!</p>
+<div class="img">
+    <div class="row">
+        <div class="col-3"></div>
+
+        <div class=" border border-secondary p-3 m-5 col-6">
+
+            <div class="form">
+                <form #f="ngForm" novalidate >
+                    <br>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label><b>First name</b></label>
+                            <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+                                ngModel name="fname" #myFname="ngModel" required>
+                            <div class="text-danger" *ngIf="myFname.touched && myFname.invalid">
+                                <b>*please enter a value</b>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label><b>Last name</b></label>
+                            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+                                ngModel name="lname" #myLname="ngModel" required>
+                            <div class="text-danger" *ngIf="myLname.touched && myLname.invalid">
+                                <b>*please enter a value</b>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <div class="row g-3">
+                            <div class="col">
+                                <label><b>Phone Number</b></label>
+                                <input type="Phone Number" class="form-control" id="exampleInputPhonenumber1"
+                                    placeholder="xxxxxxxxxx" aria-label="Phone Number" ngModel name="phonenumber"
+                                    #myphnnum="ngModel" required>
+                                <div class="text-danger" *ngIf="myphnnum.touched && myphnnum.invalid">
+                                    <b>*please enter a number</b>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="col">
+                                <label><b>Email address</b></label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    placeholder="abc@gmail.com" aria-describedby="emailHelp" ngModel email="true"
+                                    name="email" #myemail="ngModel" required>
+                                <div class="text-danger" *ngIf="myemail.touched && myemail.invalid">
+                                    <b>*please enter a valid email</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+
+                        <div class="row g-3">
+                            <div class="col">
+                                <label><b>From</b></label>
+                                <input type="text" class="form-control" placeholder="Bangalore" aria-label="From"
+                                    ngModel name="from" #from="ngModel" required>
+
+                                <div class="text-danger" *ngIf="from.touched && from.invalid">
+                                    <b>*please enter a city</b>
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+                                <label><b>To</b></label>
+                                <input type="text" class="form-control" placeholder="London" aria-label="to" ngModel
+                                    name="to" #to="ngModel" required>
+
+                                <div class="text-danger" *ngIf="to.touched && to.invalid">
+                                    <b>*please enter a city</b>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <div class="mb-3 col">
+                            <h5>Payment</h5>
+
+                            <div class="form-check m-2">
+                                <input class="form-check-input" type="radio" name="flexRadio3" id="flexRadio1" checked>
+                                <label class="form-check-label" for="flexRadio">
+                                    Credit Card
+                                </label>
+                            </div>
+
+                            <div class="form-check m-2">
+                                <input class="form-check-input" type="radio" name="flexRadio3" id="flexRadioChecked2">
+                                <label class="form-check-label" for="flexRadioChecked">
+                                    debit Card
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label><b>Booking on</b></label>
+                            <input type="date" class="form-control" aria-label="First name" ngModel name="date"
+                                #myFname="ngModel" required>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <div class="row g-3">
+                            <div class="col">
+                                <label><b>Card Nmuber</b></label>
+                                <input type="cardnumber" class="form-control" placeholder="xxxxxxxxxxxxxxxx"
+                                    aria-label="Card Nmuber" ngModel name="cardn" #cardn="ngModel" required>
+                                <div class="text-danger" *ngIf="cardn.touched && cardn.invalid">
+                                    <b>*please enter a value</b>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label><b>CVV</b></label>
+                                <input type="password" class="form-control" placeholder="cvv" aria-label="cvvn" ngModel
+                                    name="cvvn" #cvvn="ngModel" required>
+                                <div class="text-danger" *ngIf="cvvn.touched && cvvn.invalid">
+                                    <b>*please enter a value</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row g-3">
+                        <div class="mb-3 col">
+                            <label><b>Passengers</b></label>
+                            <input type="number" class="form-control" id="exampleInputNumber1" name="passengers"
+                                [(ngModel)]="passengers" required>
+                        </div>
+                        <div class="col">
+                            <label><b>Amount</b></label>
+
+                            <div>
+                                <button class="btn btn-secondary" (click)="getAmount()" name="amount">Get Amount
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="isGetAmtClicked">
+                        <span class="color"> <b>Amount to be Paid</b></span>
+                        &nbsp;&nbsp;<button class="btn btn-success">{{calculateAmount}}</button>
+
+                    </div>
+
+                    <br>
+                    <button (click)="getFormsValue(f)" class="btn btn-primary btn-lg">Pay</button>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-3"></div>
+    </div>
+</div>
+<br><br><br><br>
