@@ -1,0 +1,33 @@
+<br>
+<div class="img">
+  <div class="container con">
+    <div class="mt-5">
+      <table class="table table-hover">
+        <thead >
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FROM</th>
+            <th scope="col">TO</th>
+            <th scope="col">ARRIVAL</th>
+            <th scope="col">DEPARTURE</th>
+            <th scope="col">AMOUNT</th>
+            <th scope="col"> <a class="btn" style="cursor:hand" (click)="add()" target="_blank" style="text-decoration: none; color: blue; margin-top: 20px; font-size: large;"><b>ADD</b></a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let items of flights">
+            <th scope="row">{{items.id}}</th>
+            <td>{{items.startPoint}}</td>
+            <td>{{items.destination}}</td>
+            <td>{{items.arrival}}</td>
+            <td>{{items.departure}}</td>
+            <td>{{items.amount}}</td>
+            <td><button (click)="edit(items.id)"  class="btn btn-primary">Edit</button></td>
+            <td><button type="submit" (click)="del(items.id)" class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+       
+      </table>
+    </div>
+  </div>
+</div>

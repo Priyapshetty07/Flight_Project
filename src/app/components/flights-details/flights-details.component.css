@@ -2,11 +2,12 @@
     border-radius: 10px;
     background-color: #ffff;
     height: 40%;
-    min-height: 250px;
+    width: 100%;
+    
 }
 
 .body {
-    min-height: 560px;
+    height: 680px;
     background-color: rgb(2, 2, 40);
     
 }
@@ -24,7 +25,6 @@
 
 .articles {
     width: 90%;
-    /*Takes 90% width from WebContainer*/
     height: auto;
     margin: auto;
 }

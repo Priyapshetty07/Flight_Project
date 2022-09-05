@@ -1,14 +1,17 @@
-<p>flight-booking works!</p>
+<br><br><br>
 <div class="img">
     <div class="row">
+
         <div class="col-3"></div>
 
-        <div class=" border border-secondary p-3 m-5 col-6">
-
+        <div class=" borders border-secondary p-3 m-3 col">
             <div class="form">
-                <form #f="ngForm" novalidate >
-                    <br>
-                    <div class="row g-3">
+                <form #f="ngForm" novalidate>
+                    <h1 style="text-align:center; color: blue; margin-top:-1px;"><u><b>Passenger details</b></u></h1>
+
+                    <!-- frist name --- last name -->
+                    <div class="row g-4">
+
                         <div class="col">
                             <label><b>First name</b></label>
                             <input type="text" class="form-control" placeholder="First name" aria-label="First name"
@@ -17,6 +20,7 @@
                                 <b>*please enter a value</b>
                             </div>
                         </div>
+
                         <div class="col">
                             <label><b>Last name</b></label>
                             <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
@@ -25,10 +29,14 @@
                                 <b>*please enter a value</b>
                             </div>
                         </div>
+
                     </div>
+
                     <br>
-                    <div class="mb-3">
-                        <div class="row g-3">
+
+                    <!-- phone num -- email id -->
+                    <div class="mb-2">
+                        <div class="row g-4">
                             <div class="col">
                                 <label><b>Phone Number</b></label>
                                 <input type="Phone Number" class="form-control" id="exampleInputPhonenumber1"
@@ -51,38 +59,75 @@
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="mb-3">
 
-                        <div class="row g-3">
+                    <br>
+
+                    <!-- from -- to -->
+                    <div class="mb-2">
+
+                        <div class="row g-4">
                             <div class="col">
                                 <label><b>From</b></label>
-                                <input type="text" class="form-control" placeholder="Bangalore" aria-label="From"
-                                    ngModel name="from" #from="ngModel" required>
+                                <input type="text" class="form-control" aria-label="startPoint" ngModel name="startPoint"
+                                    #startPoint="ngModel" disabled>
 
-                                <div class="text-danger" *ngIf="from.touched && from.invalid">
-                                    <b>*please enter a city</b>
+                                <div class="text-danger" *ngIf="startPoint.touched && startPoint.invalid">
+                                    <!-- <b>*please enter a city</b> -->
                                 </div>
 
                             </div>
 
                             <div class="col">
                                 <label><b>To</b></label>
-                                <input type="text" class="form-control" placeholder="London" aria-label="to" ngModel
-                                    name="to" #to="ngModel" required>
+                                <input type="text" class="form-control" aria-label="destination" ngModel name="destination" #destination="ngModel"
+                                    disabled>
 
-                                <div class="text-danger" *ngIf="to.touched && to.invalid">
-                                    <b>*please enter a city</b>
+                                <div class="text-danger" *ngIf="destination.touched && destination.invalid">
+                                    <!-- <b>*please enter a city</b> -->
                                 </div>
 
                             </div>
                         </div>
 
                     </div>
+
                     <br>
-                    <div class="row g-3">
-                        <div class="mb-3 col">
-                            <h5>Payment</h5>
+
+                    <!-- departure -- arrival -->
+                    <div class="mb-2">
+
+                        <div class="row g-4">
+                            <div class="col">
+                                <label><b>Departure</b></label>
+                                <input type="text" class="form-control" aria-label="From" ngModel name="from"
+                                    #from="ngModel" required>
+
+                                <div class="text-danger" *ngIf="from.touched && from.invalid">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+                                <label><b>Arrival</b></label>
+                                <input type="text" class="form-control" aria-label="to" ngModel name="to" #to="ngModel"
+                                    required>
+
+                                <div class="text-danger" *ngIf="to.touched && to.invalid">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <!-- payment -->
+                    <div class="row g-4">
+                        <div class="mb-2 col">
+                            <h4><b>Payment</b></h4>
 
                             <div class="form-check m-2">
                                 <input class="form-check-input" type="radio" name="flexRadio3" id="flexRadio1" checked>
@@ -104,17 +149,19 @@
                             <input type="date" class="form-control" aria-label="First name" ngModel name="date"
                                 #myFname="ngModel" required>
                         </div>
-
                     </div>
+
                     <br>
-                    <div class="mb-3">
-                        <div class="row g-3">
+
+                    <!-- card --cvv -->
+                    <div class="mb-2">
+                        <div class="row g-4">
                             <div class="col">
                                 <label><b>Card Nmuber</b></label>
                                 <input type="cardnumber" class="form-control" placeholder="xxxxxxxxxxxxxxxx"
                                     aria-label="Card Nmuber" ngModel name="cardn" #cardn="ngModel" required>
                                 <div class="text-danger" *ngIf="cardn.touched && cardn.invalid">
-                                    <b>*please enter a value</b>
+                                    <b>*please enter a number</b>
                                 </div>
                             </div>
                             <div class="col">
@@ -122,36 +169,49 @@
                                 <input type="password" class="form-control" placeholder="cvv" aria-label="cvvn" ngModel
                                     name="cvvn" #cvvn="ngModel" required>
                                 <div class="text-danger" *ngIf="cvvn.touched && cvvn.invalid">
-                                    <b>*please enter a value</b>
+                                    <b>*please enter a cvv number</b>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <br>
-                    <div class="row g-3">
-                        <div class="mb-3 col">
+
+                    <div class="row g-4">
+                        <div class="mb-2 col">
                             <label><b>Passengers</b></label>
                             <input type="number" class="form-control" id="exampleInputNumber1" name="passengers"
                                 [(ngModel)]="passengers" required>
                         </div>
+                        
                         <div class="col">
                             <label><b>Amount</b></label>
-
-                            <div>
+                            <div class="col">
                                 <button class="btn btn-secondary" (click)="getAmount()" name="amount">Get Amount
                                 </button>
                             </div>
                         </div>
+                        
+                        <div class="col">
+                            <div *ngIf="isGetAmtClicked">
+                                <span class="color"> <b>Amount to be Paid</b></span>
+                                &nbsp;&nbsp;<button class="btn btn-success">{{calculateAmount}}</button>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <button (click)="getFormsValue(f)" class="btn btn-primary btn-lg">Pay</button>
+                        </div>
                     </div>
 
-                    <div *ngIf="isGetAmtClicked">
+                    <!-- <div *ngIf="isGetAmtClicked">
                         <span class="color"> <b>Amount to be Paid</b></span>
                         &nbsp;&nbsp;<button class="btn btn-success">{{calculateAmount}}</button>
 
-                    </div>
+                    </div> -->
 
                     <br>
-                    <button (click)="getFormsValue(f)" class="btn btn-primary btn-lg">Pay</button>
+                    <!-- <button (click)="getFormsValue(f)" class="btn btn-primary btn-lg">Pay</button> -->
 
                 </form>
             </div>
@@ -160,4 +220,4 @@
         <div class="col-3"></div>
     </div>
 </div>
-<br><br><br><br>
+<br><br>

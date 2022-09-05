@@ -1,96 +1,52 @@
 <br><br><br>
 <div class="body">
   <br><br>
-  <div class="container border">
+  <div class="container  border">
     <br>
     <form #searchForm="ngForm" class="example-form">
       <div class="container">
         <div class="row">
-          <div class="col-sm-2">
 
+          <div class="col-sm-2">
             <label for="inputState" class="form-label">
-              <h1 style="margin-left:70px; margin-top: 10px;"><b>From</b></h1>
+              <h1 style="margin-left:230px; margin-top: 10px;"><b>FROM</b></h1>
             </label>
 
-            <mat-form-field appearance="fill" style="top:10%; left: 10%">
+            <mat-form-field appearance="fill" style="top:7%; left: 100%">
               <mat-label>Select an option</mat-label>
-              <mat-select disableRipple id="from" name="fromLocation" ngModel #fromL="ngModel">
-                <mat-option value="Bangalore" id="1">Bangalore,India</mat-option>
-                <mat-option value="NewYork" id="2">NewYork,U.S.A</mat-option>
-                <mat-option value="Mumbai" id="3">Mumbai,India</mat-option>
-                <mat-option value="New Delhi" id="4">New Delhi,India</mat-option>
-                <mat-option value="Paris" id="5">Paris,France</mat-option>
-                <mat-option value="Hyderabad" id="6">Hyderabad,India</mat-option>
-                <mat-option value="Maldives" id="7">Maldives</mat-option>
-                <mat-option value="Dubai" id="8">Dubai,U.A.E</mat-option>
-                <mat-option value="Amsterdom" id="9">Amsterdom,Netherlands</mat-option>
-                <mat-option value="Los Angeles" id="10">Los Angeles,U.S.A</mat-option>
+              <mat-select disableRipple id="from" name="fromLocation" ngModel #startPointL="ngModel" [(value)]="fromSelected">
+                <mat-option *ngFor="let items of flight" value="{{items.startPoint}}" id="{{items.id}}">
+                  {{items.startPoint}}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+
           </div>
 
           <div class="col-sm-2">
-            <label for="inputState" class="form-label" style="left: 50%;">
-              <h1 style="margin-left:160px; margin-top: 10px;"><b>To</b></h1>
+            <label for="inputState" class="form-label">
+              <h1 style="margin-left:580px; margin-top: 10px;"><b>TO</b></h1>
             </label>
-            <mat-form-field appearance="fill" style="top:10%; left: 48%">
 
+            <mat-form-field appearance="fill" style="top:7%; left: 490px">
               <mat-label>Select an option</mat-label>
-              <mat-select id="to" name="toLocation" ngModel #toLoc="ngModel">
-                <mat-option value="London" id="1">London,England</mat-option>
-                <mat-option value="Singapore" id="2">Singapore</mat-option>
-                <mat-option value="Goa" id="3">Goa,India</mat-option>
-                <mat-option value="Chennai" id="4">Chennai,India</mat-option>
-                <mat-option value="Zurich" id="5">Zurich,Switzerland</mat-option>
-                <mat-option value="Dubai" id="6">Dubai,U.A.E</mat-option>
-                <mat-option value="NewYork" id="7">NewYork ,united States</mat-option>
-                <mat-option value="Manchester" id="8">Manchester,England</mat-option>
-                <mat-option value="Paris" id="9">Paris,France</mat-option>
-                <mat-option value="Greece" id="10">Greece</mat-option>
-                <mat-option value="Spain" id="11">Spain</mat-option>
-                <mat-option value="Amsterdom" id="12">Amsterdom,Netherlands</mat-option>
-
-
+              <mat-select id="to" name="toLocation" ngModel #destinationL="ngModel">
+                <mat-option value="{{items.destination}}" id="{{items.id}}" *ngFor="let items of flight">
+                  {{items.destination}}
+                </mat-option>
               </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div class="col-sm-2">
-
-            <label for="inputState" class="form-label">
-              <h1 style="margin-left:200px; margin-top: 10px;"><b>DEPARTURE</b>
-              </h1>
-            </label>
-
-            <mat-form-field class="example-full-width" appearance="fill" style="left:150px; top: 15px;">
-              <mat-label>Choose a date</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker touchUi #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-
-          <div class="col-sm-2">
-            <label for="inputState" class="form-label">
-              <h1 style="margin-left:320px; margin-top: 10px;"><b>RETURN</b>
-              </h1>
-            </label>
-
-            <mat-form-field class="example-full-width" appearance="fill" style="left: 160%; top:10%;">
-              <mat-label>Choose a date</mat-label>
-              <input matInput [matDatepicker]="picker1">
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker touchUi #picker1></mat-datepicker>
             </mat-form-field>
           </div>
         </div>
+
         <button class="btn btn-primary  btn-lg  rounded-pill" type="button" aria-expanded="false"
-            style="left: 60%;  margin-top: 50px; margin-left: 450px;  width: 11%;height: 50px;">
-            <a [routerLink]="['/flights/search']" [queryParams]="{ from:fromL.value, to: toLoc.value}"
-              style="text-decoration: none; color:white;">
-              <b> Search </b></a>
-          </button>
-        </div>
+          style="left: 60%;  margin-top: 85px; margin-left: 420px;  width: 20%;height: 50px;">
+          <a [routerLink]="['/flights/search']" [queryParams]="{startPoint:startPointL.value,destination:destinationL.value}"
+            style="text-decoration: none; color:white;">
+            <b> Search </b></a>
+        </button>
+
+      </div>
     </form>
   </div>
 </div>

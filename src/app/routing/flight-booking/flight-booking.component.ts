@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-flight-booking',
@@ -11,15 +13,22 @@ export class FlightBookingComponent implements OnInit {
   calculateAmount = 0;
   isGetAmtClicked = false;
   passengers: number = 1;
+  flightForm:any;
 
   ticketPrize: number = 5000;
   userList: any;
   isUserAdded: boolean = false;
-  constructor(private  myhttp: HttpClient) {
+  constructor(private  myhttp: HttpClient, private route:ActivatedRoute) {
     this.loggedIn = JSON.parse(sessionStorage.getItem('loggedUser') || 'null');
    }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(data=>{
+      this.flightForm=new FormGroup({
+        startPoint:new FormControl(data['startPoint']),
+        destination:new FormControl(data['destination']),
+    })
+    })
   }
   getFormsValue(formRef: any) {
 
@@ -29,8 +38,8 @@ export class FlightBookingComponent implements OnInit {
       lastname: formRef.value.lname,
       email: formRef.value.email,
       phonenumber: formRef.value.phonenumber,
-      fromc: formRef.value.from,
-      toc: formRef.value.to,
+      startPointc: formRef.value.startPoint,
+      destinationc: formRef.value.destination,
       passengers: formRef.value.passengers,
       amount: this.calculateAmount,
       date: formRef.value.date,

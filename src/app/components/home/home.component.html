@@ -44,13 +44,13 @@
 <!-- -------------------------main container -------------------------- -->
 <div class="container">
   <div class="place">
-    <h1><b>Places</b></h1>
+    <h1 style="font-size: xx-large;"><b>Places</b></h1>
   </div>
   <div class="row">
     <div *ngFor="let myele of cards1" class="card col m-3 p-2">
       <img src="{{myele.image}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{myele.title}}</h5>
+        <h2 class="card-title">{{myele.title}}</h2>
         <a target="_blank" href="#" class="btn btn-primary ">{{myele.btnText}}</a>
       </div>
     </div>
@@ -60,7 +60,7 @@
     <div *ngFor="let myele of  cards2" class="card col m-3 p-2">
       <img src="{{myele.image}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{myele.title}}</h5>
+        <h2 class="card-title">{{myele.title}}</h2>
         <a target="_blank" href="#" class="btn btn-primary">{{myele.btnText}}</a>
       </div>
     </div>
@@ -70,7 +70,7 @@
     <div *ngFor="let myele of  cards3" class="card col m-3 p-2">
       <img src="{{myele.image}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title ">{{myele.title}}</h5>
+        <h2 class="card-title ">{{myele.title}}</h2>
         <a target="_blank" href="#" class="btn btn-primary">{{myele.btnText}}</a>
       </div>
     </div>

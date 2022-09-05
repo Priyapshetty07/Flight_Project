@@ -16,8 +16,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from './materials/materials.module';
 import { FlightsComponent } from './routing/flights/flights.component';
 import { FlightBookingComponent } from './routing/flight-booking/flight-booking.component';
-import { InsertFlightComponent } from './admin/insert-flight/insert-flight.component';
-import { UpdateFlightComponent } from './admin/update-flight/update-flight.component';
+
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { AdminAddComponent } from './admin/admin-add/admin-add.component';
+import { AdminEditComponent } from './admin/admin-edit/admin-edit.component';
 
 
 @NgModule({
@@ -33,21 +37,21 @@ import { UpdateFlightComponent } from './admin/update-flight/update-flight.compo
     FlightsDetailsComponent,
     FlightsComponent,
     FlightBookingComponent,
-    InsertFlightComponent,
-    UpdateFlightComponent,
+  
+    ForgotPasswordComponent,
+    AdminPageComponent,
+    AdminAddComponent,
+    AdminEditComponent,
+    ],
     
-   
-  
-  
-   
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    HttpClientModule
     
     
   ],

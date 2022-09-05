@@ -1,87 +1,15 @@
-<!-- <br/><br/><br/><br/><br/><br/><br/>
-<div class="modal-body" style="background-color: white">
-    <div class="container-fluid log">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-5">
-                <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
-                    alt="images" width="570" height="430">
-            </div>
-            <div class="col">
-                <div class="container" style="border: 5px solid rgb(240, 234, 234); border-radius: 10px;">
-                    <form class="row g-3">
-                        <div style="margin-top:10%; text-align: center; color: blue; font-size: 25px;">
-                            <b>Login Here! </b>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="email"><b>Email address</b></label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter your email" aria-describedby="emailHelp" email="true">
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class=" row mt-3">
-                            <div class=" form-group mb-3">
-                                <label for="paswd"><b>Password</b></label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Enter your Password">
-                            </div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col">
-                                <a href="/forgot-password" style="float: right; text-decoration: none"><b>Forgot
-                                        password?</b></a>
-                            </div>
-
-                            <div>
-                                <div class="row mt-3">
-                                    <div class="col">
-                                        <div class="d-grid gap-2">
-
-                                            
-                                            <div class="d-grid gap-2">
-                                                <button type="submit" class="btn btn-primary">Login</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-
-                                        <div class="row mt-3">
-                                            <label style="text-align: center;">
-                                                New to Flight booking?
-                                                <a style="text-decoration: none;"><b>Register</b></a>
-                                            </label>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-1"></div>
-        </div>
-    </div>
-</div> -->
-<br/><br/><br/><br/><br/><br/><br/>
-<div class="container-fluid">
+<br><br><br><br><br><br>
+<!-- <div class="container-fluid log">
     <div class="row">
         <div class="col-5">
             <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
-                alt="images" width="400" height="380">
+                alt="images" width="570" height="430">
         </div>
-        <div class="col">
-            <div class="container" style="border: 2px solid rgb(240, 234, 234); border-radius: 10px;">
-
-
-                <form class="row g-3" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <div style="margin-top:10%; text-align: center; color: blue; font-size: 25px;">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <div class="container" style="border: 5px solid rgb(240, 234, 234); border-radius: 10px;">
+                <form class="row g-1" novalidate [formGroup]="loginForm" >
+                    <div style="margin-top:4%; text-align: center; color: blue; font-size: 25px;">
                         <b>Login Here! </b>
                     </div>
 
@@ -120,7 +48,7 @@
 
                         <div class="row mt-3">
                             <div class="col">
-                                <a href="/forgot-password" style="float: right; text-decoration: none"><b>Forgot
+                                <a href="/forgotPassword" style="float: right; text-decoration: none; margin-top:-3%;"><b>Forgot
                                         password?</b></a>
                             </div>
 
@@ -130,12 +58,16 @@
                                         <div class="d-grid gap-2">
 
                                             <div class="form-group">
-                                                <button [disabled]="loading" type="submit"
-                                                    class="btn btn-primary blocks">
+                                                <button [disabled]="loading" type="submit" (click)="login('user')"
+                                                    class="btn btn-primary blocks" style="margin-left: 5%;">
                                                     <span *ngIf="loading"
-                                                        class="spinner-border spinner-border-sm mr-1"></span>
+                                                        class="spinner-border spinner-border-sm mr-1" style="margin-left: 70px;"></span>
                                                     Login
                                                 </button>
+                                                
+                                                <h2  style="margin-left: 53%; margin-top: 3%;">OR</h2>
+                                                <button  class="btn btn-primary blocks" (click)="login('admin')" 
+                                                style="margin-left: 5%;"  type="submit">Login as admin</button>
                                             </div>
                                         </div>
                                     </div>
@@ -144,8 +76,8 @@
                                         <div class="row mt-3">
                                             <label style="text-align: center;">
                                                 New to Internshala?
-                                                <a routerLink="" (click)="register()"
-                                                    style="text-decoration: none;"><b>Register</b></a>
+                                                <a routerLink="/register" (click)="register()"
+                                                    style="text-decoration: none; color: blue;"><b>Register</b></a>
                                             </label>
                                         </div>
                                         <br>
@@ -161,5 +93,117 @@
                 </form>
             </div>
         </div>
+        <div class="col-1"></div>
     </div>
-</div>
+</div> -->
+<div class="modal-body" style="background-color: whitesmoke">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-5">
+                <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
+                    alt="images" width="570" height="430">
+            </div>
+            <div class="col"></div>
+            <div class="col-5">
+                <div class="container" style="border: 5px solid rgb(240, 234, 234); border-radius: 10px;">
+                  
+
+                    <form class="row g-1" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div style="margin-top:4%; text-align: center; color: blue; font-size: 25px;">
+                            <b>Login Here! </b>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="email"><b>Email address</b></label>
+                                    <input type="email" formControlName="email" class="form-control"
+                                        id="exampleInputEmail1" placeholder="Enter your email"
+                                        aria-describedby="emailHelp" email="true"
+                                        [ngClass]="{'is-invalid': submitted && f['email'].errors}" />
+
+                                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                        <div class="text-danger" *ngIf="f['email'].errors['required']">Valid email is
+                                            required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class=" row mt-3">
+                            <div class=" form-group mb-3">
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" class="form-control" formControlName="password"
+                                    id="exampleInputPassword1" placeholder="Password" minlength="2"
+                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" required>
+                                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+
+                                    <div class="text-danger" *ngIf="f['password'].errors['required']">Password is required
+                                    </div>
+                                </div>
+                            </div>
+
+
+                          
+
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <a href="/forgotPassword"
+                                        style="float: right; text-decoration: none; margin-top: -3;"><b>Forgot
+                                            password?</b></a>
+                                </div>
+
+                                <div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="d-grid gap-2">
+
+                                                <div class="form-group">
+                                                    <button [disabled]="loading" type="submit"
+                                                        class="btn btn-primary blocks">
+                                                        <span *ngIf="loading"
+                                                            class="spinner-border spinner-border-sm mr-1"></span>
+                                                        Login
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-grid gap-2">
+
+                                                <div class="form-group">
+                                                    <button [disabled]="loading" type="submit"
+                                                        class="btn btn-primary blocks">
+                                                        <span *ngIf="loading"
+                                                            class="spinner-border spinner-border-sm mr-1"  (click)="addmin()"></span>
+                                                        Login as admin 
+                                                    </button> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+
+                                            <div class="row mt-3">
+                                                <label style="text-align: center;">
+                                                    New to Flight Booking?
+                                                    <a routerLink="" (click)="register()"
+                                                        style="text-decoration: none;"><b>Register</b></a>
+                                                </label>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="userMessage" class="form-control is-invalid"> {{userMessage}}</div>
+                            <br> <br> <br>
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>

@@ -2,3 +2,11 @@
     position: fixed;
     z-index: 1;
 }
+.headers{
+    font-size:x-large;
+     background-color: white; 
+       position: fixed; 
+       left: 0%; 
+       top:0%; 
+       width: 100%;
+}
