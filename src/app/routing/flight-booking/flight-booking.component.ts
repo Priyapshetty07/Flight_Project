@@ -50,7 +50,12 @@ export class FlightBookingComponent implements OnInit {
         console.log(data);
         this.isUserAdded = true;
         formRef.form.reset();
+        
       });
+      alert(' THANK YOU FOR BOOKING FLIGHT')
+      window.location.reload();
+     
+      
   }
 
   getAmount() {

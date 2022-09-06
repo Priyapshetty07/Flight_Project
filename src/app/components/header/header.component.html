@@ -19,7 +19,7 @@
                 <a class="nav-link active" aria-current="page" href="/contact">Contact</a>
             </div>
 
-            <div>
+            <div *ngIf="role==='admin'">
                 <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
             </div>
 
@@ -30,10 +30,16 @@
                 </a>
             </div>
 
-            <div>
+            <div *ngIf="!isLogin" >
                 <a href="/login">
                     <button class=" border border-2 border-primary btn btn-outline-primary"
                         style=" font-size:x-large; color: black;">Login</button>
+                </a>
+            </div>
+            <div *ngIf="isLogin" >
+                <a href="#">
+                    <button class=" border border-2 border-primary btn btn-outline-primary" (click)="logout()" 
+                        style=" font-size:x-large; color: black;">Logout</button>
                 </a>
             </div>
         </div>

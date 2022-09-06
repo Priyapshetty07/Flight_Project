@@ -15,8 +15,8 @@
             <mat-form-field appearance="fill" style="top:7%; left: 100%">
               <mat-label>Select an option</mat-label>
               <mat-select disableRipple id="from" name="fromLocation" ngModel #startPointL="ngModel" [(value)]="fromSelected">
-                <mat-option *ngFor="let items of flight" value="{{items.startPoint}}" id="{{items.id}}">
-                  {{items.startPoint}}
+                <mat-option *ngFor="let startPoint of fromOptions" value="{{startPoint}}" >
+                  {{startPoint}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -31,8 +31,8 @@
             <mat-form-field appearance="fill" style="top:7%; left: 490px">
               <mat-label>Select an option</mat-label>
               <mat-select id="to" name="toLocation" ngModel #destinationL="ngModel">
-                <mat-option value="{{items.destination}}" id="{{items.id}}" *ngFor="let items of flight">
-                  {{items.destination}}
+                <mat-option value="{{destination}}" *ngFor="let destination of toOptions">
+                  {{destination}}
                 </mat-option>
               </mat-select>
             </mat-form-field>

@@ -10,27 +10,32 @@ import { ServicesService } from 'src/app/services/services.service';
   styleUrls: ['./admin-add.component.css']
 })
 export class AdminAddComponent implements OnInit {
-  
-  adminaddFrom:FormGroup= new FormGroup({
-    id:new FormControl(),
+
+  adminaddFrom: FormGroup = new FormGroup({
+    id: new FormControl(),
     startPoint: new FormControl(),
     destination: new FormControl(),
-   arrival: new FormControl(),
-  departure: new FormControl(),
-   amount: new FormControl()
+    arrival: new FormControl(),
+    departure: new FormControl(),
+    amount: new FormControl()
 
   });
-  
 
-constructor(private  formBuilder: FormBuilder,private user:ServicesService) {
+
+  constructor(private formBuilder: FormBuilder, private user: ServicesService) {
   }
-ngOnInit(): void {
+  ngOnInit(): void {
   }
 
-  postAdd(){
+  postAdd() {
     console.log(this.adminaddFrom.value);
-    this.user.addFligth(this.adminaddFrom.value).subscribe((data:any)=>{
- console.log(data);
+    this.user.addFligth(this.adminaddFrom.value).subscribe((data: any) => {
+      console.log(data);
+      alert('sucessfully added')
+      window.location.reload();
+      this.adminaddFrom.reset();
+      //to clear the  form screen
+
     })
 
   }

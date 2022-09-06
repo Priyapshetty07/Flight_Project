@@ -21,20 +21,18 @@ export class AdminPageComponent implements OnInit {
       this.flights = data;
     })
   }
+
   add() {
     let dialogRef = this.dialog.open(AdminAddComponent);
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result == 'success') {
-              alert('successfully added flights')
         window.location.reload()
       }
-      else
-      {
-         alert('please login with correct credentials')
-      }
+
     });
   }
-  edit(id:any) {
+
+  edit(id:number) {
     let dialogRef = this.dialog.open(AdminEditComponent);
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result == 'success') {
@@ -44,10 +42,13 @@ export class AdminPageComponent implements OnInit {
   }
 
   del(itemId: any) {
-    alert('deleted')
+    alert(' sucessfully deleted flight details')
     console.log(itemId);
+    window.location.reload()
     this.userService.delete(itemId).subscribe((data) => {
+      
       console.log(data)
+      
     })
   }
 

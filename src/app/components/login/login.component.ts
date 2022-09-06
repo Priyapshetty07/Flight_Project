@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  onSubmit() {
+  login(type: any) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -57,45 +57,49 @@ export class LoginComponent implements OnInit {
     }
 
     // this.loading = false;
+    if (type == "admin" && this.loginForm.value.email == 'admin@gmail.com' && this.loginForm.value.password == 'admin123') {
+      localStorage.setItem('role', 'admin')
+      localStorage.setItem('login', 'true');
+      this.router.navigate(['/admin'])
 
-     
-    this.myuser.loginUser(this.f['email'].value, this.f['password'].value)
-      .subscribe(
-        {
-          next: (data: any) => {
-            this.loading = true;
+    }
+    else if(type==='user'){
+      localStorage.setItem('role','user')
+      this.myuser.loginUser(this.f['email'].value, this.f['password'].value)
+        .subscribe(
+          {
+            next: (data: any) => {
+              this.loading = true;
 
 
-            if (data.length) {
+              if (data.length) {
+                this.loading = false;
+                localStorage.setItem('username', data[0].firstname + ' ' + data[0].lastname);
+                localStorage.setItem('login', 'true');
+                localStorage.setItem('email', data[0].email);
+                localStorage.setItem('firstname', data[0].firstname)
+                localStorage.setItem('lastname', data[0].lastname)
+                //this.dialogRef.close('success');
+
+                this.router.navigate(['/flightsDetails'])
+              } else {
+                this.userMessage = 'Login user not found, please enter correct email and password';
+              }
+
+            },
+            error: (e) => {
               this.loading = false;
-              localStorage.setItem('username', data[0].firstname + ' ' + data[0].lastname);
-              localStorage.setItem('login', 'true');
-              localStorage.setItem('email', data[0].email);
-              localStorage.setItem('firstname', data[0].firstname)
-              localStorage.setItem('lastname', data[0].lastname)
-              //this.dialogRef.close('success');
-
-              this.router.navigate(['/flightsDetails'])
-            } else {
-              this.userMessage = 'Login user not found, please enter correct email and password';
+              console.error(e)
             }
-
-          },
-          error: (e) => {
-            this.loading = false;
-            console.error(e)
           }
-        }
-      )
-      
-  };
-  addmin(){
+        )
+
+    }
+
 
   }
-  
+
 }
-
-
 
 
 

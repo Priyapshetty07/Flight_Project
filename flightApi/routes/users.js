@@ -7,6 +7,9 @@ let dbConnection = require('./../db/data').localConnect();
 router.get('/', function (req, res, next) {
   res.send('hii priyaaa...');
 });
+
+// register 
+
 router.post('/register', (req, res, next) => {
   let {
     email,
@@ -30,12 +33,15 @@ router.post('/register', (req, res, next) => {
 })
 
 
+
 router.get('/flight', function (req, res, next) {
   dbConnection.query('select * from Flight_project.flights', (error, result, fields) => {
     if (error) throw error;
     res.send(result)
   })
 })
+
+//login
 router.post('/login', (req, res, next) => {
 
   let {
@@ -65,56 +71,7 @@ router.post('/login', (req, res, next) => {
     }
   });
 });
-router.post('/flight', (req, res, next) => {
-  let {
-    id,
-    startPoint,
-    destination,
-   
-    arrival,
-    departure,
-    amount
-  } = req.body;
-  console.log(req.body)
-  let added = `INSERT INTO Flight_project.flights (id,startPoint,destination,arrival,departure,amount)
-  VALUES (${id},'${startPoint}','${destination}','${arrival}','${departure}',${amount})`;
-  dbConnection.query(added, (error, result, fields) => {
-    if (error) {
-      res.send(error);
-    } else {
-      if (result.length) {
-        // res.send(`{message: 'user found', usercount: 1}`)
-        res.json(result)
-      } else {
-        // res.send(`{message: 'user no found', usercount: 0}`);
-        res.json({ message: 'user not found', usercount: 0 })
 
-      }
-    }
-  })
-})
-router.post('/flightdel',(req,res,next)=>{
-  let{ 
-    id
-  }=req.body
-
-  let instercommand=`delete from Flight_project.flights where id= ${id} `;
-  console.log(instercommand);
-  dbConnection.query(instercommand, (error, result, fields) => {
-    if (error) {
-      res.send(error);
-    } else {
-      if (result.length) {
-        // res.send(`{message: 'user found', usercount: 1}`)
-        res.json(result)
-      } else { 
-        // res.send(`{message: 'user no found', usercount: 0}`);
-        res.json({ message: 'user not found', usercount: 0 })
-
-      }
-    }
-  })
-})
 router.post('/login', (req, res, next) => {
   let {
     email,
@@ -140,19 +97,20 @@ router.post('/login', (req, res, next) => {
   });
 
 });
+
+// add flight details
 router.post('/flight', (req, res, next) => {
   let {
     id,
     startPoint,
     destination,
-   
     arrival,
     departure,
     amount
   } = req.body;
   console.log(req.body)
-  let added = `update Flight_project.flights set id=${id},startPoint='${startPoint}',
-  destination='${destination}',arrival='${arrival}',departure='${departure}',amount=${amount}) where id=${id}`;
+  let added = `INSERT INTO Flight_project.flights (id,startPoint,destination,arrival,departure,amount)
+  VALUES (${id},'${startPoint}','${destination}','${arrival}','${departure}',${amount})`;
   dbConnection.query(added, (error, result, fields) => {
     if (error) {
       res.send(error);
@@ -168,4 +126,53 @@ router.post('/flight', (req, res, next) => {
     }
   })
 })
+
+//delete flight details
+router.delete('/flightdel/:userid', (req, res, next) => {
+  console.log(req.params.userid)
+  let userid = req.params.userid;
+  let deleletq = `delete from Flight_project.flights where id= '${userid}' `;
+  dbConnection.query(deleletq, (error, result, fields) => {
+    if (error) {
+      res.send(error);
+      throw error;
+    } else {
+      console.log(result);
+      if (result.affectedRows) {
+        res.send(`${userid} has been delete`)
+      } else {
+        res.send(`Unable to delete user, Not Found`);
+      }
+    }
+  });
+});
+
+// update flight details
+router.post('/flight', (req, res, next) => {
+  let {
+    id,
+    startPoint,
+    destination,
+    arrival,
+    departure,
+    amount
+  } = req.body;
+  console.log('ajshdgfjkadsg',req.body)
+  let added = `update Flight_project.flights set id=${id} startPoint=${startPoint},
+  destination=${destination},arrival=${arrival},departure=${departure},amount=${amount}) where id=${id}`;
+  console.log('query',added)
+  dbConnection.query(added, (error, result, fields) => {
+    if (error) {
+      res.send(error);
+    } else {
+      if (result.length) {
+        res.json(result)
+      } else {
+        res.json({ message: 'user not found', usercount: 0 })
+
+      }
+    }
+  })
+})
+
 module.exports = router;

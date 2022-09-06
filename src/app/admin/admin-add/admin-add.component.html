@@ -8,7 +8,7 @@
     <div class="col"></div>
     <div class="col-10">
      
-      <form [formGroup]="adminaddFrom" (ngSubmit)="postAdd();" >
+      <form novalidate [formGroup]="adminaddFrom" (ngSubmit)="postAdd();"  >
         <div class="form-group">
           <label for="exampleInpuFrom">ID</label>
           <input formControlName="id" type="text" class="form-control" id="exampleInputText" aria-describedby="emailHelp" required>

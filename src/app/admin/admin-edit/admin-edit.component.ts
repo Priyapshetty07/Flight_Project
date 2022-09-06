@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-admin-edit',
@@ -36,10 +37,10 @@ export class AdminEditComponent implements OnInit {
 
   admineditFrom: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private user: ServicesService) {
 
     this.admineditFrom = formBuilder.group({
-id:new FormControl(),
+      id: new FormControl(),
       startPoint: new FormControl(),
       destination: new FormControl(),
       arrival: new FormControl(),
@@ -53,6 +54,12 @@ id:new FormControl(),
 
   postedit() {
     console.log(this.admineditFrom.value);
+    alert('sucessfully  updated')
+    this.user.edit(this.admineditFrom.value).subscribe((data)=>{
+      console.log(data);
+      window.location.reload();
+      this.admineditFrom.reset();
 
+    })
   }
 }

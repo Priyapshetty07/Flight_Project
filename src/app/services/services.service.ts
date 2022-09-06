@@ -7,44 +7,41 @@ import { from } from 'rxjs';
 })
 export class ServicesService {
 
-
-
   constructor(private myhttp: HttpClient) { }
 
 
   registerDetails(data: any) {
     return this.myhttp.post('http://localhost:4200/api/users/register', data, { responseType: 'text' })
   }
+
   getFlights() {
     return this.myhttp.get('http://localhost:4200/api/users/flight')
   }
+
   loginUser(email: string, password: string) {
 
     //rest api call to express
 
     let loginData = {
-
       email: email,
-
       password: password
-
     };
-    return this.myhttp.post('http://localhost:4200/api/users/login', loginData );
+    return this.myhttp.post('http://localhost:4200/api/users/login', loginData);
 
   }
+  //add api call
   addFligth(data: any) {
-
     return this.myhttp.post('http://localhost:4200/api/users/flight', data);
   }
-  delete(id: any) {
-    //   let data={
-    //     id:id
-    //   }
-    console.log(id)
-    return this.myhttp.post('http://localhost:4200/api/users/flightdel', id)
-  }
+
+  //delete api call
+  delete(userid: any) {
+    return this.myhttp.delete(`api/users/flightdel/${userid}`);
+  };
+
+  //edit api call
   edit(val: any) {
-    return this.myhttp.post('http://localhost:4200/api/users/flightedit', val, { responseType: 'text' });
+    return this.myhttp.post('http://localhost:4200/api/users/flight',val,{ responseType: 'json' });
   }
 }
 
