@@ -33,13 +33,14 @@ router.post('/register', (req, res, next) => {
 })
 
 
-
 router.get('/flight', function (req, res, next) {
   dbConnection.query('select * from Flight_project.flights', (error, result, fields) => {
     if (error) throw error;
     res.send(result)
   })
 })
+
+
 
 //login
 router.post('/login', (req, res, next) => {
@@ -72,32 +73,6 @@ router.post('/login', (req, res, next) => {
   });
 });
 
-router.post('/login', (req, res, next) => {
-  let {
-    email,
-    password
-  } = req.body; // destructing of object property 
-
-  let userFound = `select * from Flight_project.register  WHERE email = '${email}' and password= '${password}'`;
-
-  dbConnection.query(userFound, (error, result, fields) => {
-
-    if (error) {
-      res.send(error);
-    } else {
-      if (result.length) {
-        // res.send(`{message: 'user found', usercount: 1}`);
-        res.json(result)
-      } else {
-        // res.send(`{message: 'user no found', usercount: 0}`);
-        res.json({ message: 'user not found', usercount: 0 })
-      }
-    }
-
-  });
-
-});
-
 // add flight details
 router.post('/flight', (req, res, next) => {
   let {
@@ -116,10 +91,8 @@ router.post('/flight', (req, res, next) => {
       res.send(error);
     } else {
       if (result.length) {
-        // res.send(`{message: 'user found', usercount: 1}`)
         res.json(result)
       } else {
-        // res.send(`{message: 'user no found', usercount: 0}`);
         res.json({ message: 'user not found', usercount: 0 })
 
       }
@@ -148,7 +121,7 @@ router.delete('/flightdel/:userid', (req, res, next) => {
 });
 
 // update flight details
-router.post('/flight', (req, res, next) => {
+router.put('/flight', (req, res, next) => {
   let {
     id,
     startPoint,
@@ -158,9 +131,9 @@ router.post('/flight', (req, res, next) => {
     amount
   } = req.body;
   console.log('ajshdgfjkadsg',req.body)
-  let added = `update Flight_project.flights set id=${id} startPoint=${startPoint},
-  destination=${destination},arrival=${arrival},departure=${departure},amount=${amount}) where id=${id}`;
-  console.log('query',added)
+  let added = `update Flight_project.flights set  startPoint='${startPoint}',
+  destination='${destination}',arrival='${arrival}',departure='${departure}',amount=${amount} where id=${id}`;
+  console.log(added)
   dbConnection.query(added, (error, result, fields) => {
     if (error) {
       res.send(error);

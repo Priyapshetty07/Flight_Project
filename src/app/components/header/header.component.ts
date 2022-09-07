@@ -8,26 +8,25 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   role: any;
-  isLogin:Boolean=false;
+  isLogin: Boolean = false;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.role=localStorage.getItem('role');
 
+    this.role = localStorage.getItem('role');
     console.log(this.role);
-    if(localStorage.getItem('login')=='true') {
-      this.isLogin=true;
-    } else if(localStorage.getItem('login')=='false'){
-      this.isLogin=false;
+    if (localStorage.getItem('login') == 'true') {
+      this.isLogin = true;
+    } else if (localStorage.getItem('login') == 'false') {
+      this.isLogin = false;
     }
- 
+
   }
-  logout()
-  {
+  logout() {
     localStorage.clear();
     this.router.navigate(['/admin'])
-  
+
   }
 
 }

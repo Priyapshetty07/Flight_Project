@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as e from 'express';
 import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
@@ -26,11 +27,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private myuser: ServicesService,
-
-
   ) {
   }
-
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -45,6 +43,7 @@ export class LoginComponent implements OnInit {
     //this.dialogRef.close();
     this.router.navigate(['/register'])
   }
+  
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
@@ -63,9 +62,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/admin'])
 
     }
-    else if(type==='user'){
-      localStorage.setItem('role','user')
-      this.myuser.loginUser(this.f['email'].value, this.f['password'].value)
+    else if (type === 'user') {
+      localStorage.setItem('role', 'user')
+      this.myuser.loginUser(this.loginForm.value.email, this.loginForm.value.password)
         .subscribe(
           {
             next: (data: any) => {
@@ -94,6 +93,9 @@ export class LoginComponent implements OnInit {
           }
         )
 
+    }
+    else {
+      this.userMessage = 'Login user not found, please enter correct email and password';
     }
 
 

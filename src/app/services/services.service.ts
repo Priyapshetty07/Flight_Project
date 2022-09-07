@@ -29,7 +29,8 @@ export class ServicesService {
     return this.myhttp.post('http://localhost:4200/api/users/login', loginData);
 
   }
-  //add api call
+  
+  //add api call //inserting
   addFligth(data: any) {
     return this.myhttp.post('http://localhost:4200/api/users/flight', data);
   }
@@ -41,7 +42,7 @@ export class ServicesService {
 
   //edit api call
   edit(val: any) {
-    return this.myhttp.post('http://localhost:4200/api/users/flight',val,{ responseType: 'json' });
+    return this.myhttp.put('http://localhost:4200/api/users/flight',val,{ responseType: 'json' });
   }
 }
 

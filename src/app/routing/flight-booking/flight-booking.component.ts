@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { LoginComponent } from 'src/app/components/login/login.component';
 
 @Component({
   selector: 'app-flight-booking',
@@ -18,7 +20,7 @@ export class FlightBookingComponent implements OnInit {
   ticketPrize: number = 5000;
   userList: any;
   isUserAdded: boolean = false;
-  constructor(private  myhttp: HttpClient, private route:ActivatedRoute) {
+  constructor(private  myhttp: HttpClient, private route:ActivatedRoute,public dialog: MatDialog) {
     this.loggedIn = JSON.parse(sessionStorage.getItem('loggedUser') || 'null');
    }
 
@@ -52,8 +54,20 @@ export class FlightBookingComponent implements OnInit {
         formRef.form.reset();
         
       });
-      alert(' THANK YOU FOR BOOKING FLIGHT')
-      window.location.reload();
+      // localStorage.getItem
+      // 
+      if(localStorage.getItem('login')=='true')
+      {
+        alert(' THANK YOU FOR BOOKING FLIGHT')
+       window.location.reload();
+
+      }
+      else{
+        const dialogRef=this.dialog.open(LoginComponent)
+        dialogRef.afterClosed().subscribe((data)=>{
+          
+        })
+      }
      
       
   }
